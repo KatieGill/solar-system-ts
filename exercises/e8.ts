@@ -11,10 +11,9 @@ export function findPlanetByMoon({
   moonName: string;
 }) {
   return planets.find((planet) => {
-    if (planet.moons) {
-      const moonArray = planet.moons.map((moon) => moon.toLowerCase());
-      return moonArray.includes(moonName.toLowerCase());
-    }
+    return planet.moons?.some(
+      (moon) => moon.toLowerCase() === moonName.toLowerCase()
+    );
   });
 }
 // === TEST YOURSELF ===

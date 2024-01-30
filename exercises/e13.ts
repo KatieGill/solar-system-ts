@@ -4,12 +4,12 @@
 import { AllData } from "../data/types";
 
 export function getAveragePlanetsTemperature(data: AllData) {
-  const averageTempArray = data.planets.map((planet) => planet.avgTemp);
-  const reducedAverageTempArray = averageTempArray.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
+  return (
+    data.planets.reduce(
+      (avgTempSum, planet) => (avgTempSum += planet.avgTemp),
+      0
+    ) / data.planets.length
   );
-  return reducedAverageTempArray / averageTempArray.length;
 }
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-13"

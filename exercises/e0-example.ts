@@ -1,16 +1,13 @@
 import { data } from "../data/data";
+import { AllData } from "../data/types";
 // SPACE DATA SAMPLE EXERCISE 0
 // Return the name of the first Planet in the array
 // Return example: 'Planet Name'
 
-export function getFirstPlanetName(data) {
-  // Your code goes here...
+export function getFirstPlanetName(data: AllData) {
   const planets = data.planets;
-  //console.log(planets);
-  return planets[0].name;
+  return planets[0]?.name;
 }
-
-
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-0"

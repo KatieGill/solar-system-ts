@@ -4,11 +4,11 @@ import { AllData } from "../data/types";
 
 // Return example: 42
 export const allPlanetsMoonsCount = (data: AllData) => {
-  let sum = 0;
-  data.planets.map((planet) => {
-    if (planet.moonsCount) sum += planet.moonsCount;
-  });
-  return sum;
+  return data.planets.reduce(
+    (moonsSum, planet) =>
+      (moonsSum += planet.moonsCount ? planet.moonsCount : 0),
+    0
+  );
 };
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-12"

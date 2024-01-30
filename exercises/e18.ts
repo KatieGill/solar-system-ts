@@ -3,6 +3,7 @@
 // Return example: 1902
 // Hint: use a Map data structure instead of an object if you want typescript to be happy
 import { Asteroid } from "../data/types";
+import { maxBy } from "./e17";
 
 export function getGreatestDiscoveryYear(asteroids: Asteroid[]) {
   const asteroidDiscoveriesMap = new Map<number, number>();
@@ -12,15 +13,11 @@ export function getGreatestDiscoveryYear(asteroids: Asteroid[]) {
     ).length;
     asteroidDiscoveriesMap.set(asteroid.discoveryYear, count);
   });
-  let maxCount;
-  let year;
-  for (let entry of asteroidDiscoveriesMap.entries()) {
-    if (maxCount === undefined || entry[1] > maxCount) {
-      maxCount = entry[1];
-      year = entry[0];
-    }
-  }
-  return year;
+  const greatestDiscoveryYear = maxBy(
+    [...asteroidDiscoveriesMap],
+    (entry) => entry[1]
+  );
+  if (greatestDiscoveryYear) return greatestDiscoveryYear[0];
 }
 
 // === TEST YOURSELF ===
