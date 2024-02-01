@@ -6,7 +6,7 @@ import { AllData } from "../data/types";
 export const allPlanetsMoonsCount = (data: AllData) => {
   return data.planets.reduce(
     (moonsSum, planet) =>
-      (moonsSum += planet.moonsCount ? planet.moonsCount : 0),
+      (moonsSum + (planet.moonsCount ?? 0)),
     0
   );
 };

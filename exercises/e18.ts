@@ -8,16 +8,16 @@ import { maxBy } from "./e17";
 export function getGreatestDiscoveryYear(asteroids: Asteroid[]) {
   const asteroidDiscoveriesMap = new Map<number, number>();
   asteroids.forEach((asteroid) => {
-    let count = asteroids.filter(
-      (obj) => obj.discoveryYear === asteroid.discoveryYear
-    ).length;
-    asteroidDiscoveriesMap.set(asteroid.discoveryYear, count);
+    asteroidDiscoveriesMap.set(
+      asteroid.discoveryYear,
+      (asteroidDiscoveriesMap.get(asteroid.discoveryYear) ?? 0) + 1
+    );
   });
   const greatestDiscoveryYear = maxBy(
     [...asteroidDiscoveriesMap],
     (entry) => entry[1]
   );
-  if (greatestDiscoveryYear) return greatestDiscoveryYear[0];
+  return greatestDiscoveryYear?.[0];
 }
 
 // === TEST YOURSELF ===

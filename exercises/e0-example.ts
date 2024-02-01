@@ -1,4 +1,3 @@
-import { data } from "../data/data";
 import { AllData } from "../data/types";
 // SPACE DATA SAMPLE EXERCISE 0
 // Return the name of the first Planet in the array
